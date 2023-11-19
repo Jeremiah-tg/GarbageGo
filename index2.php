@@ -1,4 +1,24 @@
 
+<?php
+//import database
+
+$conn = mysqli_connect("localhost","root","","garbagegodb");
+
+
+if(isset($_POST["submit"])){
+  $name = $_POST["name"];
+  $email = $_POST["email"];
+  $phone = $_POST["phone"];
+  $msg = $_POST["msg"];
+
+  $query ="INSERT INTO `message` VALUES ('$name','$email','$phone','$msg');";
+  mysqli_query($conn, $query);
+  echo "<script>
+  alert('Message sent successfully!');
+  </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +33,62 @@
     <link type="text/css" href="css/cover.css">
     <link rel="stylesheet" href="css/features.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link type="image/x-icon" rel="icon" href="img/11.ico">
+
+    <style>
+    .scroll-down {
+  height: 7%;
+  width: 2%;
+  border: 2px solid white;
+  position: absolute;
+  left: 50%;
+  color: white;
+  bottom: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.scroll-down::before,
+.scroll-down::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 10px;
+  color: white;
+  width: 10px;
+  transform: translate(-50%, -100%) rotate(45deg);
+  border: 5px solid white;
+  border-top: transparent;
+  border-left: transparent;
+  animation: scroll-down 1s ease-in-out infinite;
+}
+.scroll-down::before {
+  top: 30%;
+  animation-delay: 0.3s;
+  /* animation: scroll-down 1s ease-in-out infinite; */
+}
+
+@keyframes scroll-down {
+  0% {
+    /* top:20%; */
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    top: 90%;
+    opacity: 0;
+  }
+}
+    </style>
+
+
     </head>
-  
+
 <body style="width:100%;">
     <section class="header">
       <div class="container">
@@ -22,44 +96,41 @@
       </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="img/11.png" alt=""></a>
+              <!-- <a class="navbar-brand" href="#"><img src="img/11.png" alt=""></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              </button> -->
+              <!-- <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                   <a class="nav-link text-light" aria-current="page" href="#">Home</a>
                   <a class="nav-link text-light" href="#hanging-icons">About Us</a>
                   <a class="nav-link text-light" href="#custom-cards">Services</a>
                   <a class="nav-link text-light" href="#contactUs">Contact</a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </nav>
 
-          <!-- Change -->
-
-
-          <div id="homedisplay" class="container bg-transparent">
-             <h4 class="deo1 text-center text-light" style="font-size: 30px; margin-bottom: 30px;">Welcome to</h4>
-             <h1 class="deo text-center text-light">GarbageGo!</h1>
+            <div id="homedisplay" class="container bg-transparent">
+              <center> <a class="navbar-brand" href="index.php"><img src="img/11.png" alt=""></a></center>
+             <h4 class="deo1 text-center text-light" style="font-size: 30px;margin-top:5%;">-</h4>
+             <h1 class="deo text-center text-light">GarbageGo!</h1><br>
+             <!-- <p style="position:absolute; visibility:none;">No hassles, no delay</p> -->
+            <!-- <center> <a class="navbar-brand" href="#"><img src="img/11.png" alt=""></a></center> -->
          <center style="margin-top: 80px;">
-             <a href="register.php" class="btn btn-primary" style="margin-right: 10px; padding-left: 25px;padding-right: 25px;">Register</a>
-             <a href="login.php" class="btn btn-danger" style="margin-left: 10px; padding-left: 20px;padding-right: 20px;">Login</a>
+             <a href="login.php" class="btn btn-info" style="margin-right: 10px; padding-left: 25px; width:12%; padding-right: 25px;color:white;">Log In</a>
+             <a href="signup.php" class="btn btn-light" style="margin-left: 10px; padding-left: 20px;padding-right: 20px; width:12%;">Register</a>
          </center>
        </div>
      </div>
-          <!-- change end -->
-        <!-- <div id="homedisplay" class="container bg-transparent">
-            <h4 class="deo1 text-center text-light" style="font-size: 30px; margin-bottom: 30px;">Welcome to</h4>
-            <h1 class="deo text-center text-light">GarbageGo!</h1>
-        <center style="margin-top: 80px;">
-            <a href="register.html" class="btn btn-primary" style="margin-right: 10px; padding-left: 25px;padding-right: 25px;">Register</a>
-            <a href="login.html" class="btn btn-danger" style="margin-left: 10px; padding-left: 20px;padding-right: 20px;">Login</a>
-        </center>
-      </div> -->
 
     </section>
+
+    <a href="#hanging-icons">
+        <div class="scroll-down"></div>
+      </a>
+
+
     <!--request-->
     <section class="request">
 
@@ -68,7 +139,7 @@
         <p style="width:100%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
           eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <center>  <a href="#" class="btn btn-primary">Read More..</a></center>
+      <center>  <a href="#contactUs" class="btn btn-primary">Know More..</a></center>
         <!-- <a href="login.html" class="hero">For more</a> -->
 
     </section>
@@ -205,17 +276,20 @@
     <section id="contact" class="col-lg-8">
         <h2>Contact Us</h2>
       <p>Have a question or need assistance? Feel free to get in touch with us.</p>
-        <form action="#" method="post" class="p-5">
+        <form action="" method="post" class="p-5">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" required >
 
             <label for="email">Your Email</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" required></textarea>
+            <label for="phone">Your Mobile number</label>
+            <input type="number" id="contact" name="phone" >
 
-            <button type="submit" value="message">Send Message</button>
+            <label for="message">Your Message</label>
+              <textarea id="message" rows="9" name="msg" required></textarea>
+                <input type="submit" name="submit" value="Send">
+            <button type="reset" value="message" visibility="hidden">Cancel Message</button>
         </form>
     </section>
 </div></center>
@@ -240,12 +314,13 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
           <li class="nav-item"><a href="#hanging-icons" class="nav-link px-2 text-muted">About Us</a></li>
           <li class="nav-item"><a href="#custom-cards" class="nav-link px-2 text-muted">Services</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Order Now</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
         </ul>
       </footer>
     </div>
 </body>
+
 </html>
