@@ -118,8 +118,8 @@ if(isset($_POST["submit"])){
              <!-- <p style="position:absolute; visibility:none;">No hassles, no delay</p> -->
             <!-- <center> <a class="navbar-brand" href="#"><img src="img/11.png" alt=""></a></center> -->
          <center style="margin-top: 80px;">
-             <a href="login.php" class="btn btn-info" style="margin-right: 10px; padding-left: 25px; width:12%; padding-right: 25px;color:white;">Log In</a>
-             <a href="signup.php" class="btn btn-light" style="margin-left: 10px; padding-left: 20px;padding-right: 20px; width:12%;">Register</a>
+             <a href="login.php" class="btn btn-info" style="margin-right: 10px; padding-left: 25px; width:12% auto; padding-right: 25px;color:white;">Log In</a>
+             <a href="signup.php" class="btn btn-light" style="margin-left: 10px; padding-left: 20px;padding-right: 20px; width:12% auto;">Register</a>
          </center>
        </div>
      </div>
